@@ -9,14 +9,13 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Formations</h1>
 
     <ul>
-        {% for degree in degreeDetails %}
+        {% for degree in degrees %}
             <li>
-                <a href="{{path('degree/details',{"id": } }})>
-                {{  }}
-                </a>
+              <a href="{{ path('degree_details.showdetails', { "id": degree.id }) }}"> {{ degree.name }} </a>
+
             </li>
         {% endfor %}
     </ul>

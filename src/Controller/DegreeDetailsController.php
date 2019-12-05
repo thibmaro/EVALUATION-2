@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Degree;
 use App\Repository\DegreeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DegreeDetailsController extends AbstractController
 {
     /**
-     * @Route("/degree/details", name="degree_details")
+     * @Route("admin/degree", name="degree_details")
      */
     public function index(DegreeRepository $degreeRepository)
     {
@@ -17,7 +18,18 @@ class DegreeDetailsController extends AbstractController
         $degreeDetails = $degreeRepository ->findAll();
 
         return $this->render('degree_details/index.html.twig', [
-            'degrees' => '$DegreeDetails',
+            'degrees' => $degreeDetails
+        ]);
+    }
+
+    /**
+     * @Route("admin/degree/{id}", name="degree_details.showdetails")
+     */
+    public function showdetails(Degree $degree)
+    {
+        return $this->render('degree_details/showDetails.html.twig', [
+            'degree' => $degree
         ]);
     }
 }
+

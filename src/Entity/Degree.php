@@ -28,6 +28,11 @@ class Degree
      */
     private $promotions;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $repository;
+
     public function __construct()
     {
         $this->promotions = new ArrayCollection();
@@ -77,6 +82,18 @@ class Degree
                 $promotion->setDegree(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRepository(): ?string
+    {
+        return $this->repository;
+    }
+
+    public function setRepository(?string $repository): self
+    {
+        $this->repository = $repository;
 
         return $this;
     }

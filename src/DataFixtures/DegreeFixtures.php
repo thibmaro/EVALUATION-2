@@ -23,6 +23,7 @@ class DegreeFixtures extends Fixture
         foreach ($degrees as $index => $degreeName) {
             $entity = new Degree();
             $entity -> setName($degreeName);
+            $entity -> setRepository("https://www.banque.di.afpa.fr/EspaceEmployeursCandidatsActeurs/EGPResultat.aspx?cr=D%C3%A9veloppeur%20web&cd=&ct=01280m03&type=t");
             $manager -> persist($entity);
 
             $this -> addReference("Degree_$index", $entity);
